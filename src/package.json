@@ -1,0 +1,27 @@
+{
+  "name": "frctbaapi",
+  "types": "src/typescript.ts",
+  "description": "A package to access only FRC data from the TBA api.",
+  "version": "0.0.1",
+  "homepage": "https://github.com/BrandgrandRealMe/FRCTBAAPI#readme",
+  "license": "MIT",
+  "main": "src/main.js",
+  "keywords": [
+    "FRC",
+    "TBA",
+    "Data",
+    "API"
+  ],
+  "bugs": {
+    "url": "https://github.com/BrandgrandRealMe/FRCTBAAPI/issues"
+  },
+  "author": {
+    "name": "BrandgrandReal",
+    "url": "https://github.com/BrandgrandRealMe",
+    "email": "BrandonTheDev@proton.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrandgrandRealMe/FRCTBAAPI.git"
+  }
+}
