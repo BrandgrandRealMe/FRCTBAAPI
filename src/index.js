@@ -6,10 +6,11 @@ export function TBAaddToken(newToken) {
   token = newToken;
 }
 
-export async function teamInfo(team, year, options = {}) {
+export async function teamInfo(team, options = {}) {
   const url = `${baseUrl}/team/frc${team}`;
   options.headers = {
     "X-TBA-Auth-Key": token,
+  };
 
   return await fetch(url, options)
     .then((response) => response.json())
@@ -79,8 +80,11 @@ export async function teamRobotImage(team, year, options = {}) {
   const mediajson = await mediadata.json();
   let firstImage = null;
   for (const item of mediajson) {
-    if (item.type === "image" || item.type === "imgur") {
+    if (item.type === "imgur") {
       firstImage = `https://i.imgur.com/${item.foreign_key}.png`;
+      break;
+    } else if (item.type === "image") {
+      firstImage = item.direct_url;
       break;
     }
   }

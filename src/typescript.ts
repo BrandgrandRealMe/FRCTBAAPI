@@ -6,7 +6,7 @@ export function TBAaddToken(newToken: string): void {
   token = newToken;
 }
 
-export async function teamInfo(team: string, year: number, options: any = {}): Promise<any> {
+export async function teamInfo(team: string, options: any = {}): Promise<any> {
   const url: string = `${baseUrl}/team/frc${team}`;
   options.headers = {
     "X-TBA-Auth-Key": token,
@@ -19,15 +19,15 @@ export async function teamInfo(team: string, year: number, options: any = {}): P
 
 export async function teamLogo(team: string, options: any = {}): Promise<any> {
   const date: Date = new Date();
-  const currentYear: number = date.getFullYear();
-  const url: string = `${baseUrl}/team/frc${team}/media/${currentYear}`;
+  const year: number = date.getFullYear();
+  const url: string = `${baseUrl}/team/frc${team}/media/${year}`;
   options.headers = {
     "X-TBA-Auth-Key": token,
   };
 
-  const mediadata = await fetch(url, options);
-  const mediajson = await mediadata.json();
-  let firstImage: any = null;
+  const mediadata: Response = await fetch(url, options);
+  const mediajson: any[] = await mediadata.json();
+  let firstImage: string | null = null;
   for (const item of mediajson) {
     if (item.type === "avatar") {
       firstImage = item;
@@ -42,7 +42,7 @@ export async function teamLogo(team: string, options: any = {}): Promise<any> {
   }
 }
 
-export async function teamAwards(team: string, year: number, options: any = {}): Promise<any> {
+export async function teamAwards(team: string, year: number | null, options: any = {}): Promise<any> {
   let url: string = "";
   if (year) {
     url = `${baseUrl}/team/frc${team}/awards/${year}`;
@@ -76,12 +76,15 @@ export async function teamRobotImage(team: string, year: number, options: any = 
     "X-TBA-Auth-Key": token,
   };
 
-  const mediadata = await fetch(url, options);
-  const mediajson = await mediadata.json();
+  const mediadata: Response = await fetch(url, options);
+  const mediajson: any[] = await mediadata.json();
   let firstImage: string | null = null;
   for (const item of mediajson) {
-    if (item.type === "image" || item.type === "imgur") {
+    if (item.type === "imgur") {
       firstImage = `https://i.imgur.com/${item.foreign_key}.png`;
+      break;
+    } else if (item.type === "image") {
+      firstImage = item.direct_url;
       break;
     }
   }
