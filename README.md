@@ -1,7 +1,7 @@
 # FRCTBAAPI
 An package for the TBA api that pulls only FRC data (WIP)
 
-## Installation TS
+## Installation
 `npm install frctbaapi`
 
 ```js
