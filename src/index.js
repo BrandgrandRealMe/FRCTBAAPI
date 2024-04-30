@@ -95,3 +95,14 @@ export async function teamRobotImage(team, year, options = {}) {
     return null;
   }
 }
+
+export async function eventInfo(eventkey, options = {}) {
+  const url = `${baseUrl}/event/${eventkey}`;
+  options.headers = {
+    "X-TBA-Auth-Key": token,
+  };
+
+  return await fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => data);
+}
