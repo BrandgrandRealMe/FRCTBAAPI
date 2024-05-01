@@ -6,6 +6,7 @@
   "homepage": "https://github.com/BrandgrandRealMe/FRCTBAAPI#readme",
   "license": "MIT",
   "main": "src/main.js",
+  "type": "module",
   "keywords": [
     "FRC",
     "TBA",
