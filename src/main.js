@@ -106,3 +106,33 @@ export async function eventInfo(eventkey, options = {}) {
     .then((response) => response.json())
     .then((data) => data);
 }
+
+export async function getTeamMedia(team, year, options = {}) {
+  const url = `${baseUrl}/team/${team}/media/${year}`;
+  options.headers = {
+    "X-TBA-Auth-Key": token,
+  };
+
+  return await fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => data);
+}
+
+export async function getRobots(team, year, options = {}) {
+  const url = `${baseUrl}/team/${team}/robots`;
+
+  options.headers = {
+    "X-TBA-Auth-Key": token,
+  };
+
+  if (year) {  
+    const data = await fetch(url, options)
+                .then((response) => response.json())
+                .then((data) => data);
+    return data.find(item => item.year === year);   
+  } else {
+    return await fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => data);
+  }
+}

@@ -226,3 +226,58 @@ eventInfo(eventkey)
   "playoff_type_string": "string"
 }
 ```
+
+### Getting team media
+
+**Input:**
+
+```js
+getTeamMedia(team, year) 
+```
+
+**Output:**
+
+```json
+[
+  {
+    "type": "youtube",
+    "foreign_key": "string",
+    "details": {},
+    "preferred": true,
+    "direct_url": "string",
+    "view_url": "string"
+  }
+]
+```
+
+### Getting team robots
+
+**Input:**
+
+```js
+getRobots(team) Or getRobots(team, year)
+```
+
+**Output:**
+
+Without year:
+```json
+[
+  {
+    "year": 0,
+    "robot_name": "string",
+    "key": "string",
+    "team_key": "string"
+  }
+]
+```
+
+With year:
+```json
+  {
+    "year": 0,
+    "robot_name": "string",
+    "key": "string",
+    "team_key": "string"
+  }
+```
