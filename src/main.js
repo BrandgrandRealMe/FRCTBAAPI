@@ -108,7 +108,7 @@ export async function eventInfo(eventkey, options = {}) {
 }
 
 export async function getTeamMedia(team, year, options = {}) {
-  const url = `${baseUrl}/team/${team}/media/${year}`;
+  const url = `${baseUrl}/team/frc${team}/media/${year}`;
   options.headers = {
     "X-TBA-Auth-Key": token,
   };
@@ -119,7 +119,7 @@ export async function getTeamMedia(team, year, options = {}) {
 }
 
 export async function getRobots(team, year, options = {}) {
-  const url = `${baseUrl}/team/${team}/robots`;
+  const url = `${baseUrl}/team/frc${team}/robots`;
 
   options.headers = {
     "X-TBA-Auth-Key": token,
